@@ -1,0 +1,40 @@
+---
+# Source: mq-metric-samples/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq-metric-samples
+  annotations:
+    app.openshift.io/vcs-ref: 78e249e61d5da71ada53b86b054c3268880c6bb6
+    app.openshift.io/vcs-uri: https://github.com/tutorial-org-12345/mq-metric-samples
+    app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"QM"}]'
+  labels:
+    app.kubernetes.io/name: mq-metric-samples
+    helm.sh/chart: mq-metric-samples-1.0.0-rcv5.2.6
+    app.kubernetes.io/instance: mq-metric-samples
+    app: mq-metric-samples
+    app.kubernetes.io/part-of: inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: mq-metric-samples
+      app.kubernetes.io/instance: mq-metric-samples
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: mq-metric-samples
+        app.kubernetes.io/instance: mq-metric-samples
+    spec:
+      serviceAccountName: mq-metric-samples
+      containers:
+        - name: mq-metric-samples
+          image: "image-registry.openshift-image-registry.svc:5000/ci/mq-metric-samples:v5.2.6"
+          imagePullPolicy: IfNotPresent          
+          envFrom:
+            - configMapRef:
+                name: mq-metric-samples
+            - secretRef:
+                name: mq-metric-samples
+          resources:
+            null

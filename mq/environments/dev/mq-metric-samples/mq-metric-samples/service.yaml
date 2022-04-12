@@ -1,0 +1,24 @@
+---
+# Source: mq-metric-samples/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq-metric-samples
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: "9157"
+  labels:
+    app.kubernetes.io/name: mq-metric-samples
+    helm.sh/chart: mq-metric-samples-1.0.0-rcv5.2.6
+    app.kubernetes.io/instance: mq-metric-samples
+    app: mq-metric-samples
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9157
+      targetPort: 9157
+      protocol: TCP
+      name: metrics
+  selector:
+    app.kubernetes.io/name: mq-metric-samples
+    app.kubernetes.io/instance: mq-metric-samples
