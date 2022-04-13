@@ -228,7 +228,7 @@ spec:
 
           # RELEASE_NAME="${APP_NAME}"
           # RELEASE_NAME="qm1"
-          RELEASE_NAME=$(results.resource-name.path)
+          RELEASE_NAME=$(tasks.ibm-smoke-tests-mq.results.resource-name)
           echo "RELEASE_NAME: $RELEASE_NAME"
 
           podname=$(kubectl get pods --selector=app.kubernetes.io/instance=$RELEASE_NAME -o custom-columns=POD:.metadata.name --no-headers | head -n 1)
