@@ -215,7 +215,7 @@ spec:
             fi
             echo -n "${target}" | cut -f1 -d / | tee $(results.resource-type.path)
             echo -n "${target}" | cut -f2 -d / | tee /source/resource-name.txt
-#            echo -n "${target}" > /source/target.txt
+          # echo -n "${target}" > /source/target.txt
           done
       securityContext:
         privileged: true
