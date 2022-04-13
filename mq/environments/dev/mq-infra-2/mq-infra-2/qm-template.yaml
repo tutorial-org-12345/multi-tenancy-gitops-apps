@@ -3,7 +3,7 @@
 apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
-  name: qm1
+  name: qm2
   annotations:
     argocd.argoproj.io/sync-wave: "300"
     helm.sh/hook-weight: "300"
@@ -26,7 +26,7 @@ spec:
     logFormat: Basic
     metrics:
       enabled: true
-    name: QM1
+    name: QM2
     readinessProbe:
       failureThreshold: 1
       initialDelaySeconds: 10
