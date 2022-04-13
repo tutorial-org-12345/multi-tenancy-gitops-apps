@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mqsc-configmap
+  name: mqsc-configmap-qm2
 data:
   config.mqsc: |
     DEFINE QLOCAL(IBM.DEMO.Q.QM2.TESTQ) BOQNAME(IBM.DEMO.Q.BOQ) BOTHRESH(3) REPLACE

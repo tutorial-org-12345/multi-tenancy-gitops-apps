@@ -44,11 +44,11 @@ spec:
     availability:
       type: SingleInstance
     
-    image: "image-registry.openshift-image-registry.svc:5000/ci/mq-infra-2:0.0.1"
+    image: "image-registry.openshift-image-registry.svc:5000/ci/mq-infra-2:0.0.2"
     imagePullPolicy: Always
     mqsc:
     - configMap:
-        name: mqsc-configmap
+        name: mqsc-configmap-qm2
         items:
         - config.mqsc
     
